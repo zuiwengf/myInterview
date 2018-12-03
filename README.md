@@ -1,228 +1,199 @@
-为了增加大家的阅读体验，我重新进行了排版，并且增加了较为详细的目录供大家参考！如果有老哥对操作系统比较重要的知识总结过的话，欢迎找我哦！
-
-<div align="center">  
-
-<img src="http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-16/49833984.jpg" width=""/>
-</br>
-
-[![QQ群](https://img.shields.io/badge/QQ%E7%BE%A4-577511615-red.svg)](//shang.qq.com/wpa/qunwpa?idkey=f128b25264f43170c2721e0789b24b180fc482113b6f256928b6198ae07fe5d4)
-
-</div>
-
-仓库新增了【备战春招/秋招系列】，希望可以为马上面临春招或者以后需要面试的小老哥助力！目前更新了美团常见面试题以及一些面试必备内容。下面是腾讯云双11做的活动，最后几天了哦，秒杀的服务器很便宜哦！
-> 腾讯云热门云产品1折起，送13000元续费/升级大礼包：https://cloud.tencent.com/redirect.php?redirect=1034&cps_key=2b96dd3b35e69197e2f3dfb779a6139b&from=console
->
-> 腾讯云新用户大额代金券：https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=2b96dd3b35e69197e2f3dfb779a6139b&from=console
-
-
-## 目录
-
-- [:coffee: Java](#coffee-java)
-  - [Java/J2EE 基础](#javaj2ee-基础)
-  - [Java 集合框架](#java-集合框架)
-  - [Java 多线程](#java-多线程)
-  - [Java IO 与 NIO](#java-io-与-nio)
-  - [Java 虚拟机 jvm](#java-虚拟机-jvm)
-- [:open_file_folder: 数据结构与算法](#open_file_folder-数据结构与算法)
-  - [数据结构](#数据结构)
-  - [算法](#算法)
-- [:computer: 计算机网络与数据通信](#computer-计算机网络与数据通信)
-  - [网络相关](#网络相关)
-  - [数据通信\(RESTful、RPC、消息队列\)](#数据通信restfulrpc消息队列)
-- [:iphone: 操作系统](#iphone-操作系统)
-  - [Linux相关](#linux相关)
-- [:pencil2: 主流框架/软件](#pencil2-主流框架软件)
-  - [Spring](#spring)
-  - [ZooKeeper](#zookeeper)
-- [:floppy_disk: 数据存储](#floppy_disk-数据存储)
-  - [MySQL](#mysql)
-  - [Redis](#redis)
-- [:punch: 架构](#punch-架构)
-  - [分布式相关](#分布式相关)
-- [:musical_note: 面试必备](#musical_note-面试必备)
-  - [备战春招/秋招系列](#备战春招秋招系列)
-  - [最最最常见的Java面试题总结](#最最最常见的java面试题总结)
-- [:art: 闲谈](#art-闲谈)
-- [:envelope: 说明](#envelope-说明)
-  - [项目介绍](#项目介绍)
-  - [关于转载](#关于转载)
-  - [如何对该开源文档进行贡献](#如何对该开源文档进行贡献)
-  - [为什么要做这个开源文档？](#为什么要做这个开源文档)
-  - [最后](#最后)
-  - [福利](#福利)
-  - [公众号](#公众号)
-  
-## :coffee: Java
+## 技术心得
 
-### Java/J2EE 基础
+---
 
-* [Java 基础知识回顾](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/Java基础知识.md)
-* [J2EE 基础知识回顾](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/J2EE基础知识.md)
-* [static、final、this、super关键字总结](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/final、static、this、super.md) 
-* [static 关键字详解](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/static.md)   
-    
-### Java 集合框架
+原文地址：https://github.com/aalansehaiyang/technology-talk
 
-* [这几道Java集合框架面试题几乎必问](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/这几道Java集合框架面试题几乎必问.md)
-* [Java 集合框架常见面试题总结](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/Java集合框架常见面试题总结.md)
-* [ArrayList 源码学习](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/ArrayList.md) 
-* [【面试必备】透过源码角度一步一步带你分析 ArrayList 扩容机制](https://github.com/Snailclimb/JavaGuide/blob/master/Java相关/ArrayList-Grow.md)    
-* [LinkedList 源码学习](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/LinkedList.md)   
-* [HashMap(JDK1.8)源码学习](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/HashMap.md)  
-   
-### Java 多线程
-* [多线程系列文章](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/多线程系列.md)
-* [并发编程面试必备：synchronized 关键字使用、底层原理、JDK1.6 之后的底层优化以及 和ReenTrantLock 的对比](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/synchronized.md)
-* [并发编程面试必备：乐观锁与悲观锁](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/面试必备之乐观锁与悲观锁.md)
-* [并发编程面试必备：JUC 中的 Atomic 原子类总结](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/Multithread/Atomic.md)
-* [并发编程面试必备：AQS 原理以及 AQS 同步组件总结](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/Multithread/AQS.md)
-* [BATJ都爱问的多线程面试题](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/Multithread/BATJ都爱问的多线程面试题.md)
+`版权所有，转发请注明来源。答疑解惑及商务合作，请发邮件到 aalansehaiyang52@126.com`
 
-### Java IO 与 NIO
 
-* [Java IO 与 NIO系列文章](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/Java%20IO与NIO.md)
+### 前言
 
-### Java 虚拟机 jvm
+有人认为编程是一门技术活，要有一定的天赋，非天资聪慧者不能及也。
 
-* [可能是把Java内存区域讲的最清楚的一篇文章](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/可能是把Java内存区域讲的最清楚的一篇文章.md)
-* [搞定JVM垃圾回收就是这么简单](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/搞定JVM垃圾回收就是这么简单.md)
-* [Java虚拟机（jvm）学习与面试](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/Java虚拟机（jvm）.md)
+其实不然，笔者计算机专业出身，对于技术这碗饭有一些心得体会，大多数人成为某领域顶级专家可能会有些难度，但应对日常工作，**成长为资深研发工程师、技术专家、甚至成为小团队的Team Leader，并不难。**
 
-### 设计模式
+**多读书、多看报，多研究开源框架源码，比如：github.com，这里汇集了全球工程师的智慧！**
 
-* [设计模式系列文章](https://github.com/Snailclimb/Java_Guide/blob/master/Java相关/设计模式.md)
+言归正传，本文会列举工作中常用的一些技术，以及如何锻炼提升自己的架构能力。
 
-## :open_file_folder: 数据结构与算法
-   
-### 数据结构
+由于每块技术市场上基本都有对应的网络资料或书籍，所以本文只是少篇幅列举工作中用到的核心知识点，抛砖引玉，属于进阶型，不适用初学者。
 
-* [数据结构知识学习与面试](https://github.com/Snailclimb/Java_Guide/blob/master/数据结构与算法/数据结构.md)
+### 基础知识
+* 	[java](basic-knowledge/java.md)
+*  	[spring](basic-knowledge/spring.md)
+*  	[spring boot](basic-knowledge/springboot.md)
+*  	[spring cloud](basic-knowledge/springcloud.md)
+*	[ibatis](basic-knowledge/ibatis.md)
+*	[设计模式](basic-knowledge/常用的设计模式.md)
+*	[Log日志](basic-knowledge/Log4j.md)
 
-### 算法
 
-* [算法学习与面试](https://github.com/Snailclimb/Java_Guide/blob/master/数据结构与算法/算法.md)  
-* [常见安全算法（MD5、SHA1、Base64等等）总结](https://github.com/Snailclimb/Java_Guide/blob/master/数据结构与算法/常见安全算法（MD5、SHA1、Base64等等）总结.md)
-* [算法总结——几道常见的子符串算法题 ](https://github.com/Snailclimb/Java_Guide/blob/master/数据结构与算法/搞定BAT面试——几道常见的子符串算法题.md)
-* [算法总结——几道常见的链表算法题 ](https://github.com/Snailclimb/Java_Guide/blob/master/数据结构与算法/Leetcode-LinkList1.md)   
+### 数据库
+目前使用最多还是mysql，虽然单机性能比不上oracle，但免费开源，单机成本低且借助于分布式集群，可以有强大的输出能力。
 
-## :computer: 计算机网络与数据通信
+*	[连接池](data-base/database-connection-pool.md)
+* 	[事务](data-base/transaction.md)
+* 	[分库分表](data-base/分库分表.md)
+* 	[全局表 ID生成器](data-base/id-generate.md)
+* 	[读写分离](http://blog.csdn.net/itomge/article/details/6909240)
+* 	[SQL调优](data-base/sql-optimize.md)
+* 	[其它](data-base/other.md)
 
-### 网络相关
 
-* [计算机网络常见面试题](https://github.com/Snailclimb/Java_Guide/blob/master/计算机网络与数据通信/计算机网络.md)
-* [计算机网络基础知识总结](https://github.com/Snailclimb/Java_Guide/blob/master/计算机网络与数据通信/干货：计算机网络知识总结.md)
+### web容器/协议/网络
 
-### 数据通信(RESTful、RPC、消息队列)
+* [负载均衡](web/load-balance.md)
+* 服务器
+	* [Nginx](web/Nginx.md)
+	* [Tomcat](web/tomcat.md)
+* 协议
+	* [HTTP 协议](web/http.md)
+	* [TCP 协议](web/tcp.md)
+* [CDN](web/CDN.md)
+* [其它](web/other.md)
 
-* [数据通信(RESTful、RPC、消息队列)相关知识点总结](https://github.com/Snailclimb/Java-Guide/blob/master/计算机网络与数据通信/数据通信(RESTful、RPC、消息队列).md)
-  
 
-## :iphone: 操作系统
+### 常用三方工具包
 
-### Linux相关
+* [Google Guava](open-source-framework/Goole-Guava.md)
+* [fastJson](open-source-framework/fastJson.md)
+* [log4J](http://blog.csdn.net/itomge/article/details/17913607)
+* [commons-codec](open-source-framework/commons-codec.md)
+* [commons-lang3](open-source-framework/commons-lang3.md)
+* [commons-io](open-source-framework/commons-io.md)
+* [Quartz](open-source-framework/Quartz.md)
+* [HttpClient](open-source-framework/HttpClient.md)
+* [okhttp](open-source-framework/okhttp.md)
+* [Javassist](open-source-framework/Javassist.md)
+* [lombok](open-source-framework/lombok.md)
 
-* [后端程序员必备的 Linux 基础知识](https://github.com/Snailclimb/Java-Guide/blob/master/操作系统/后端程序员必备的Linux基础知识.md)  
-* [Shell 编程入门](https://github.com/Snailclimb/Java-Guide/blob/master/操作系统/Shell.md)  
-## :pencil2: 主流框架/软件
 
-### Spring
+### 中间件
 
-* [Spring 学习与面试](https://github.com/Snailclimb/Java_Guide/blob/master/主流框架/Spring学习与面试.md)
-* [Spring中bean的作用域与生命周期](https://github.com/Snailclimb/Java_Guide/blob/master/主流框架/SpringBean.md)
-* [SpringMVC 工作原理详解](https://github.com/Snailclimb/JavaGuide/blob/master/主流框架/SpringMVC%20%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3.md)
+*	RPC框架
+	* [dubbo](middle-software/dubbo.md)
+	* [dubbox](https://www.oschina.net/p/dubbox)
+	* [motan](https://github.com/weibocom/motan)
+	* [Thrift](https://github.com/apache/thrift)
+	* [RPC框架性能比较](middle-software/rpc-compare.md)
 
-### ZooKeeper
+*   MQ消息
+	* [ActiveMQ](https://github.com/apache/activemq)
+	* [RabbitMQ](middle-software/RabbitMQ.md)
+	* [Kafka](middle-software/kafka.md)
+	* [RocketMQ](middle-software/RocketMQ.md)	
+	* [MQ框架性能比较](middle-software/mq-compare.md)
 
-* [可能是把 ZooKeeper 概念讲的最清楚的一篇文章](https://github.com/Snailclimb/Java_Guide/blob/master/主流框架/ZooKeeper.md)
-  
-## :floppy_disk: 数据存储
+*   分布式缓存
+	* [redis](open-source-framework/redis.md)
+	* [memcache](http://blog.csdn.net/itomge/article/details/8035197)
 
-### MySQL
+*   本地缓存
+	* [Guava](middle-software/guava.md)
+	* [Ehcache](middle-software/ehcache.md)
+	 	
+*   搜索
+	* [Elasticsearch](middle-software/elasticsearch.md)
 
-* [MySQL 学习与面试](https://github.com/Snailclimb/Java_Guide/blob/master/数据存储/MySQL.md)
-* [【思维导图-索引篇】搞定数据库索引就是这么简单](https://github.com/Snailclimb/Java_Guide/blob/master/数据存储/MySQL%20Index.md)
+*   分布式数据框架
+	* [cobar](middle-software/cobar.md)
+	* [Mycat](middle-software/mycat.md)
+	* [tsharding](middle-software/tsharding.md)
+	* [tddl](https://github.com/alibaba/tb_tddl)
+	* [sharding-jdbc](middle-software/sharding-jdbc.md)
+	* [dbsplit](https://gitee.com/robertleepeak/dbsplit)
 
-### Redis
+*	分布式协调服务
+	* [zookeeper](middle-software/zookeeper.md)
+		
+*   配置管理
 
-* [Redis 总结](https://github.com/Snailclimb/Java_Guide/blob/master/数据存储/Redis/Redis.md)
-* [Redlock分布式锁](https://github.com/Snailclimb/Java_Guide/blob/master/数据存储/Redis/Redlock分布式锁.md)
-* [如何做可靠的分布式锁，Redlock真的可行么](https://github.com/Snailclimb/Java_Guide/blob/master/数据存储/Redis/如何做可靠的分布式锁，Redlock真的可行么.md)
+	* [super-diamond](other/super-diamond源码分析.md)
+	* [disconf](https://www.oschina.net/p/disconf)
+	* [apollo](middle-software/apollo.md)
 
-## :punch: 架构
+*   分布式文件系统
+	* [FastDFS](middle-software/FastDFS.md)
 
-### 分布式相关
+*   分布式任务调度框架
 
-* [一文读懂分布式应该学什么](https://github.com/Snailclimb/Java_Guide/blob/master/架构/分布式.md)
+	* [Elastic-Job](https://github.com/elasticjob/elastic-job)
+	* [详解当当网的分布式作业框架elastic-job](http://www.infoq.com/cn/articles/dangdang-distributed-work-framework-elastic-job)
+	* [TBSchedule](http://blog.csdn.net/taosir_zhang/article/details/50728362)
+	* [xxl-job](https://github.com/xuxueli/xxl-job)
 
-## :musical_note: 面试必备
+*   大数据
+	* [Hbase](middle-software/Hbase.md)
+	* [Spark](middle-software/Spark.md)
+	* [Hadoop](middle-software/Hadoop.md)
+	* [Hive](middle-software/Hive.md)
+	* [other框架](middle-software/big-data.md)	
 
-### 备战春招/秋招系列
+*  其它
+	* [数据库binlog的增量订阅&消费组件](https://github.com/alibaba/canal)
+	* [数据库同步系统](https://github.com/alibaba/otter)
+	* [TCC-Transaction](middle-software/TCC-Transaction.md)
+	* [Netty](middle-software/Netty.md)
+	* [OpenResty](middle-software/openresty.md)
 
-* [【备战春招/秋招系列1】程序员的简历就该这样写](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/程序员的简历之道.md)
-* [手把手教你用Markdown写一份高质量的简历](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/手把手教你用Markdown写一份高质量的简历.md)
-* [【备战春招/秋招系列2】初出茅庐的程序员该如何准备面试？](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/interviewPrepare.md)
-* [【备战春招/秋招系列3】Java程序员必备书单](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/books.md)   
-* [ 【备战春招/秋招系列4】美团面经总结基础篇 （附详解答案）](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/美团-基础篇.md)
-* [ 【备战春招/秋招系列5】美团面经总结进阶篇 （附详解答案）](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/美团-进阶篇.md)
-* [ 【备战春招/秋招系列5】美团面经总结终结篇篇 （附详解答案）](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/美团-终结篇.md)
+### 系统架构 
 
-### 最最最常见的Java面试题总结
-   
-这里会分享一些出现频率极其极其高的面试题，初定周更一篇，什么时候更完什么时候停止。
-   
-* [第一周（2018-8-7）](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/最最最常见的Java面试题总结/第一周（2018-8-7）.md) (为什么 Java 中只有值传递、==与equals、 hashCode与equals)
-* [第二周（2018-8-13）](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/最最最常见的Java面试题总结/第二周(2018-8-13).md)(String和StringBuffer、StringBuilder的区别是什么？String为什么是不可变的？、什么是反射机制？反射机制的应用场景有哪些？......)
-* [第三周（2018-08-22）](https://github.com/Snailclimb/Java-Guide/blob/master/Java相关/这几道Java集合框架面试题几乎必问.md) （Arraylist 与 LinkedList 异同、ArrayList 与 Vector 区别、HashMap的底层实现、HashMap 和 Hashtable 的区别、HashMap 的长度为什么是2的幂次方、HashSet 和 HashMap 区别、ConcurrentHashMap 和 Hashtable 的区别、ConcurrentHashMap线程安全的具体实现方式/底层具体实现、集合框架底层数据结构总结）
-* [第四周(2018-8-30).md](https://github.com/Snailclimb/Java-Guide/blob/master/面试必备/最最最常见的Java面试题总结/第四周(2018-8-30).md) （主要内容是几道面试常问的多线程基础题。）
+* [架构经验](system-architecture/architecture-experience.md)
+* [经典案例](system-architecture/architecture-good-case.md)
+* [通用技术方案选型](system-architecture/technology-selection.md)
+* [编码前3000问](system-architecture/编码前3000问.md)
+* [软硬件性能](system-architecture/software-performance.md)
+* [技术大纲](system-architecture/knowledge-outline.md)
 
-    
-## :art: 闲谈  
 
-* [选择技术方向都要考虑哪些因素](https://github.com/Snailclimb/Java-Guide/blob/master/其他/选择技术方向都要考虑哪些因素.md) 
-* [结束了我短暂的秋招，说点自己的感受](https://github.com/Snailclimb/JavaGuide/blob/master/%E5%85%B6%E4%BB%96/2018%20%E7%A7%8B%E6%8B%9B.md) 
- 
+### 项目管理
 
-***
+* [论需求调研的重要性](project-management/论需求调研的重要性.md)
+* [项目管理](project-management/project-management.md)
+* [代码管理](project-management/code.md)
+* [测试相关](project-management/test.md)
 
-## :envelope: 说明
 
-### 项目介绍
+### 运维
 
-该文档主要是笔主在学习 Java 的过程中的一些学习笔记，但是为了能够涉及到大部分后端学习所需的技术知识点我也会偶尔引用一些别人的优秀文章的链接。文档大部分内容都是笔者参考书籍以及自己的原创。少部分面试题回答参考了其他人已有答案，上面都已注明。
+*	[快速排查线上问题](ops/online-question.md)
+*	[linux常用命令](ops/linux-commands.md)
+*	[本地代码调试](ops/本地代码调试.md)
+* 	[Docker](ops/docker.md)
 
-该文档涉及的主要内容包括： Java、 数据结构与算法、计算机网络与数据通信、 操作系统、主流框架、数据存储、架构、面试必备知识点等等。相信不论你是前端还是后端都能在这份文档中收获到东西。
+### 个人成长
 
-### 关于转载
+*   [学习网站](other/study.md)
+*   [Tom哥的读书单](other/book.md)
+*   [个人成长与职业规划](other/person.md)
+*   [程序员素养](other/programer.md)
 
-**如果需要引用到本仓库的一些东西，必须注明转载地址！！！毕竟大多都是手敲的，或者引用的是我的原创文章，希望大家尊重一下作者的劳动**:smiley::smiley::smiley:！
 
-### 如何对该开源文档进行贡献
+### 其它
 
-1. 笔记内容大多是手敲，所以难免会有笔误，你可以帮我找错别字。
-2. 很多知识点我可能没有涉及到，所以你可以对其他知识点进行补充。
-3. 现有的知识点难免存在不完善或者错误，所以你可以对已有知识点的修改/补充。
+*	[常用软件工具](other/tool.md)
+*	[一致性hash算法](other/一致性hash.md)
+*   面试
+	* [java面试题](other/java-interview.md)
+	* [大数据面试题](other/bigdata-interview.md)
+*	[回车与换行的区别](other/回车与换行的区别.md)
+*   [github上fork项目后，如何同步更新后面提交](http://blog.csdn.net/qq1332479771/article/details/56087333)
+* 	[其它](other/other.md)
 
-### 为什么要做这个开源文档？
+### 写在后面
 
-在我们学习Java的时候，很多人会面临我不知道继续学什么或者面试会问什么的尴尬情况（我本人之前就很迷茫:smile:）。所以，我决定通过这个开源平台来帮助一些有需要的人，通过下面的内容，你会掌握系统的Java学习以及面试的相关知识。本来是想通过Gitbook的形式来制作的，后来想了想觉得可能有点大题小做 :grin: 。另外，我自己一个人的力量毕竟有限，希望各位有想法的朋友可以提issue。开源的最大目的是，让更多人参与进来，这样文档的正确性才能得以保障！
+**不知不觉，这个项目已经更新两年多了。如果喜欢请点击右上角 star 收藏；如果因为读里面的文章，开阔了视野，提升了技术能力并升职加薪，也欢迎打赏表扬，你的赞赏会激励作者一直更新下去，谢谢支持！**
 
-### 最后
 
-本人会利用业余时间一直更新下去，目前还有很多地方不完善，一些知识点我会原创总结，还有一些知识点如果说网上有比较好的文章了，我会把这些文章加入进去。您也可以关注我的微信公众号：“Java面试通关手册”，我会在这里分享一些自己的原创文章。 另外该文档格式参考：[Github Markdown格式](https://guides.github.com/features/mastering-markdown/)，表情素材来自：[EMOJI CHEAT SHEET](https://www.webpagefx.com/tools/emoji-cheat-sheet/)。如果大家需要与我交流，可以扫描下方二维码添加我的微信：
 
-![我的微信](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-11-17/16009393.jpg)
+![image](basic-knowledge/img/27.png)
 
-### 福利
 
-> 阿里云技术有保障，在云服务技术上远远领先于国内其他云服务提供商。大家或者公司如果需要用到云服务器的话，推荐阿里云服务器，下面是阿里云目前正在做的一些活动，错过这波，后续可能多花很多钱：
+### 联系作者
 
-1. [全民云计算：ECS云服务器2折起,1核1G仅需293元/年](https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=hf47liqn)
-2. [高性能企业级性能云服务器限时2折起,2核4G仅需720元/年](https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=hf47liqn)
-3. [拉1人拼团，立享云服务器￥234/年](https://promotion.aliyun.com/ntms/act/vmpt/aliyun-group/home.html?spm=5176.8849694.home.4.27a24b70kENhtV&userCode=hf47liqn)
-4. [最高￥1888云产品通用代金券](https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=hf47liqn) 
-5. [阿里云建站服务](https://promotion.aliyun.com/ntms/act/jianzhanquan.html?userCode=hf47liqn)（企业官网、电商网站，多种可供选择模板，代金券免费领取）
+Email：aalansehaiyang52@126.com
 
-### 参考
+### Lisence
 
- https://github.com/Snailclimb/JavaGuide
- 
+Lisenced under [Apache 2.0 lisence](http://opensource.org/licenses/Apache-2.0)

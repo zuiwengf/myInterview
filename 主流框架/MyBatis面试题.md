@@ -21,7 +21,24 @@
 ③ 通过sqlsession执行数据库操作 
 ④ 调用session.commit()提交事务 
 ⑤ 调用session.close()关闭会话
+###{} 和 ${} 的区别是什么？
+${} 是 Properties 文件中的变量占位符，它可以用于 XML 标签属性值和 SQL 内部，属于字符串替换。例如将 ${driver} 会被静态替换为 com.mysql.jdbc.Driver ：
 
+<dataSource type="UNPOOLED">
+    <property name="driver" value="${driver}"/>
+    <property name="url" value="${url}"/>
+    <property name="username" value="${username}"/>
+</dataSource>
+${} 也可以对传递进来的参数原样拼接在 SQL 中。代码如下：
+
+<select id="getSubject3" parameterType="Integer" resultType="Subject">
+    SELECT * FROM subject
+    WHERE id = ${id}
+</select>
+实际场景下，不推荐这么做。因为，可能有 SQL 注入的风险。
+#{} 是 SQL 的参数占位符，Mybatis 会将 SQL 中的 #{} 替换为 ? 号，在 SQL 执行前会使用 PreparedStatement 的参数设置方法，按序给 SQL 的 ? 号占位符设置参数值，比如 ps.setInt(0, parameterValue) 。 所以，#{} 是预编译处理，可以有效防止 SQL 注入，提高系统安全性。
+
+另外，#{} 和 ${} 的取值方式非常方便。例如：#{item.name} 的取值方式，为使用反射从参数对象中，获取 item 对象的 name 属性值，相当于 param.getItem().getName() 。
 ### MyBatis与Hibernate有哪些不同？
 Mybatis和hibernate不同，它不完全是一个ORM框架，因为MyBatis需要程序员自己编写Sql语句，不过mybatis可以通过XML或注解方式灵活配置要运行的sql语句，并将java对象和sql语句映射生成最终执行的sql，最后将sql执行的结果再映射生成java对象。 
   
