@@ -20,25 +20,25 @@
 由于每块技术市场上基本都有对应的网络资料或书籍，所以本文只是少篇幅列举工作中用到的核心知识点，抛砖引玉，属于进阶型，不适用初学者。
 
 ### 基础知识
-* 	[java](basic-knowledge/java.md)
-*  	[spring](basic-knowledge/spring.md)
-*  	[spring boot](basic-knowledge/springboot.md)
-*  	[spring cloud](basic-knowledge/springcloud.md)
-*	[ibatis](basic-knowledge/ibatis.md)
-*	[设计模式](basic-knowledge/常用的设计模式.md)
-*	[Log日志](basic-knowledge/Log4j.md)
+* 	[java](Java相关/java.md)
+*  	[spring](主流框架/spring/spring.md)
+*  	[spring boot](主流框架/spring/springboot.md)
+*  	[spring cloud](主流框架/spring/springcloud.md)
+*	[ibatis](主流框架/ibatis.md)
+*	[设计模式](架构/常用的设计模式.md)
+*	[Log日志](Java相关/Log4j.md)
 
 
 ### 数据库
 目前使用最多还是mysql，虽然单机性能比不上oracle，但免费开源，单机成本低且借助于分布式集群，可以有强大的输出能力。
 
-*	[连接池](data-base/database-connection-pool.md)
-* 	[事务](data-base/transaction.md)
-* 	[分库分表](data-base/分库分表.md)
-* 	[全局表 ID生成器](data-base/id-generate.md)
+*	[连接池](数据存储/database-connection-pool.md)
+* 	[事务](数据存储/transaction.md)
+* 	[分库分表](数据存储/分库分表.md)
+* 	[全局表 ID生成器](数据存储/id-generate.md)
 * 	[读写分离](http://blog.csdn.net/itomge/article/details/6909240)
-* 	[SQL调优](data-base/sql-optimize.md)
-* 	[其它](data-base/other.md)
+* 	[SQL调优](数据存储/sql-optimize.md)
+* 	[其它](数据存储/other.md)
 
 
 ### web容器/协议/网络
