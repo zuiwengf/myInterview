@@ -1,0 +1,21 @@
+
+修改客户端docker配置信息
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "insecure-registries": ["192.168.2.155:5000"],
+  "registry-mirrors": ["http://f1361db2.m.daocloud.io"]
+}
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+docker run -d -p 5000:5000 --restart=always -v /opt/data/registry:/var/lib/registry --name registry registry:2.6.2
+不能用 rancher 管理
+
+curl 192.168.2.155:5000/v2/_catalog
+
+
+删除镜像
+
+docker rmi <image id>
