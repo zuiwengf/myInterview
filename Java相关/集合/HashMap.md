@@ -16,7 +16,7 @@
 > 感谢 [changfubai](https://github.com/changfubai) 对本文的改进做出的贡献！
 
 ## HashMap 简介
-HashMap 主要用来存放键值对，它基于哈希表的Map接口实现</font>，是常用的Java集合之一。 
+HashMap 主要用来存放键值对，它基于哈希表的Map接口实现</font>，是常用的Java集合之一。
 
 JDK1.8 之前 HashMap 由 数组+链表 组成的，数组是 HashMap 的主体，链表则是主要为了解决哈希冲突而存在的（“拉链法”解决冲突）.JDK1.8 以后在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为 8）时，将链表转化为红黑树，以减少搜索时间。
 
@@ -67,27 +67,27 @@ static int hash(int h) {
 ```java
 public class HashMap<K,V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable {
     // 序列号
-    private static final long serialVersionUID = 362498820763181265L;    
+    private static final long serialVersionUID = 362498820763181265L;
     // 默认的初始容量是16
-    static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;   
+    static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
     // 最大容量
-    static final int MAXIMUM_CAPACITY = 1 << 30; 
+    static final int MAXIMUM_CAPACITY = 1 << 30;
     // 默认的填充因子
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
     // 当桶(bucket)上的结点数大于这个值时会转成红黑树
-    static final int TREEIFY_THRESHOLD = 8; 
+    static final int TREEIFY_THRESHOLD = 8;
     // 当桶(bucket)上的结点数小于这个值时树转链表
     static final int UNTREEIFY_THRESHOLD = 6;
     // 桶中结构转化为红黑树对应的table的最小大小
     static final int MIN_TREEIFY_CAPACITY = 64;
     // 存储元素的数组，总是2的幂次倍
-    transient Node<k,v>[] table; 
+    transient Node<k,v>[] table;
     // 存放具体元素的集
     transient Set<map.entry<k,v>> entrySet;
     // 存放元素的个数，注意这个不等于数组的长度。
     transient int size;
     // 每次扩容和更改map结构的计数器
-    transient int modCount;   
+    transient int modCount;
     // 临界值 当实际大小(容量*填充因子)超过临界值时，会进行扩容
     int threshold;
     // 填充因子
@@ -174,18 +174,18 @@ static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
     public More ...HashMap() {
         this.loadFactor = DEFAULT_LOAD_FACTOR; // all   other fields defaulted
      }
-     
+
      // 包含另一个“Map”的构造函数
      public More ...HashMap(Map<? extends K, ? extends V> m) {
          this.loadFactor = DEFAULT_LOAD_FACTOR;
          putMapEntries(m, false);//下面会分析到这个方法
      }
-     
+
      // 指定“容量大小”的构造函数
      public More ...HashMap(int initialCapacity) {
          this(initialCapacity, DEFAULT_LOAD_FACTOR);
      }
-     
+
      // 指定“容量大小”和“加载因子”的构造函数
      public More ...HashMap(int initialCapacity, float loadFactor) {
          if (initialCapacity < 0)
@@ -289,7 +289,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
             }
         }
         // 表示在桶中找到key值、hash值与插入元素相等的结点
-        if (e != null) { 
+        if (e != null) {
             // 记录e的value
             V oldValue = e.value;
             // onlyIfAbsent为false或者旧值为null
@@ -310,7 +310,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
     // 插入后回调
     afterNodeInsertion(evict);
     return null;
-} 
+}
 ```
 
 **我们再来对比一下 JDK1.7 put方法的代码**
@@ -322,9 +322,9 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 
 ```java
 public V put(K key, V value)
-    if (table == EMPTY_TABLE) { 
-    inflateTable(threshold); 
-}  
+    if (table == EMPTY_TABLE) {
+    inflateTable(threshold);
+}
     if (key == null)
         return putForNullKey(value);
     int hash = hash(key);
@@ -335,7 +335,7 @@ public V put(K key, V value)
             V oldValue = e.value;
             e.value = value;
             e.recordAccess(this);
-            return oldValue; 
+            return oldValue;
         }
     }
 
@@ -398,7 +398,7 @@ final Node<K,V>[] resize() {
     }
     else if (oldThr > 0) // initial capacity was placed in threshold
         newCap = oldThr;
-    else { 
+    else {
         signifies using defaults
         newCap = DEFAULT_INITIAL_CAPACITY;
         newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);
@@ -422,7 +422,7 @@ final Node<K,V>[] resize() {
                     newTab[e.hash & (newCap - 1)] = e;
                 else if (e instanceof TreeNode)
                     ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
-                else { 
+                else {
                     Node<K,V> loHead = null, loTail = null;
                     Node<K,V> hiHead = null, hiTail = null;
                     Node<K,V> next;
@@ -518,7 +518,7 @@ public class HashMapDemo {
         for (java.util.Map.Entry<String, String> entry : entrys) {
             System.out.println(entry.getKey() + "--" + entry.getValue());
         }
-        
+
         /**
          * HashMap其他常用方法
          */
@@ -536,3 +536,34 @@ public class HashMapDemo {
 }
 
 ```
+## HashMap的扩容机制
+
+---
+
+######简介
+
+单纯的kv键值对结构，可以接受null键和null值，速度比较快，非线程安全。
+
+
+#####HashMap的数据结构
+
+HashMap实际上是一个“链表的数组”的数据结构，每个元素存放链表头结点的数组，即数组和链表的结合体。
+
+![image](img/Snip20160731_1.png)
+
+Entry就是数组中的元素，每个 Map.Entry 其实就是一个key-value对，它持有指向下一个元素的引用，这就构成了链表。
+
+
+
+#####工作原理：
+
+
+1.put
+
+当我们往HashMap中put元素的时候，先根据key的hashCode重新计算hash值，根据hash值得到这个元素在数组中的位置（即下标），如果数组该位置上已经存放有其他元素了，那么在这个位置上的元素将以链表的形式存放，新加入的放在链头，最先加入的放在链尾。如果数组该位置上没有元素，就直接将该元素放到此数组中的该位置上。
+
+
+
+HashMap基于hashing原理，我们通过put()方法储存，当我们将键值对传递给put()方法时，它调用键对象的hashCode()方法来计算hashcode，然后找到bucket位置来储存值对象。
+
+当获取对象时，同上找到对应的bucket，通过键对象的equals()方法找到正确的键值对，然后返回值对象。HashMap使用链表来解决碰撞问题，当发生碰撞了，对象将会储存在链表的下一个节点中。 HashMap在每个链表节点中储存键值对对象。
