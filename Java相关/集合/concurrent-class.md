@@ -14,17 +14,17 @@
 * ConcurrentHashMap
 
 	是线程安全的。
-	
+
 	Put方法，首先是对key.hashCode进行hash操作，得到hash值。然后获取对应的segment对象，接着调用Segment对象的put方法完成当前操作。当调用put方法时，首先lock操作，完成操作后再释放锁。
-	
+
 	http://ifeve.com/concurrenthashmap/
 
-![image](img/17.png)
+![image](../img/17.png)
 
 * Semaphore
 
 	可以控制某资源同时被访问的个数。例如连接池中通常要控制创建连接的个数。
-	
+
 	tryAcquire方法，获得锁<br>
 	release方法，释放锁
 
@@ -37,9 +37,9 @@
 * CyclicBarrier
 
 	cyclicBarrier中的await方法会对count值减1，并阻塞当前线程（java.util.concurrent.locks.Condition.await()），如果count==0时先执行CyclicBarrier内部的Runnable任务（java.lang.Runnable.run()），然后唤醒所有阻塞的线程（java.util.concurrent.locks.Condition.signalAll()），count恢复初始值（可以进入下一轮循环）。
-	
+
 	与CountdownLatch不同的是，它可以循环重用。
-	
+
 ```
 import java.util.concurrent.CyclicBarrier;
 
@@ -147,7 +147,7 @@ RejectExecutionHandler是针对任务无法处理时的一些自我保护处理�
 
 ```
 
- ![image](img/Snip20160701_52.png)
+ ![image](../img/Snip20160701_52.png)
 
 
 **如何确定最大线程数？**
@@ -167,10 +167,10 @@ Runtime.getRuntime().availableProcessors();
 
 计算密集型程序的阻塞系数为0，IO密集型程序的阻塞系数接近1。
 确定阻塞系数，我们可以先试着猜测，或者采用一些性能分析工具或java.lang.management API 来确定线程花在系统IO上的时间与CPU密集任务所耗的时间比值。
-         
-         
+
+
 * Executors
-	
+
 	工具类，提供大量管理线程执行器的工厂方法。
 
 	newFixedThreadPool(int) ,创建固定大小的线程池
@@ -194,7 +194,7 @@ ScheduledThreadPoolExecutor可执行callable的task，执行完毕后得到执�
 * CopyOnWriteArrayList
 
 	线程安全，读操作时无锁的ArrayList。每次新增一个对象时，会将创建一个新的数组（长度+1），将之前的数组中的内容复制到新的数组中，并将新增的对象放入数组末尾。最后做引用切换。
-	
+
 * CopyOnWriteArraySet
 
 	与上面的类似，无非在add时，会调用addIfAbsent，由于每次add时都要进行数组遍历，因此性能会略低于CopyOnWriteArrayList
@@ -208,10 +208,10 @@ Unlock方法，释放锁
 * ReentrantReadWriteLock
 
 	与ReentrantLock没有任何继承关系，提供了读锁和写锁，在读多写少的场景中大幅度提升性能。
-	
+
 	持有读锁时，不能直接调用写锁的lock方法<br>
 	持有写锁时，其他线程的读或写都会被阻塞。
-	
+
 	ReentrantReadWriteLock  lock=new ReentrantReadWriteLock();
 WriteLock  writeLock=lock.writeLock();
 ReadLock   readLock=lock.readLock();
@@ -220,11 +220,11 @@ ReadLock   readLock=lock.readLock();
 * 如何避免死锁
 
 	1.制定锁的顺序，来避免死锁（先A后B，避免A->B和B->A同时存在）；
-	
+
 	2.尝试使用定时锁（lock.tryLock(timeout)）
-	
+
 	3.在持有锁的方法中进行其他方法的调用，尽量使用开放调用（当调用方法不需要持有锁时，叫做开放调用）
-	
+
 	4.减少锁的持有时间、减小锁代码块的粒度。
 
 
@@ -233,5 +233,3 @@ ReadLock   readLock=lock.readLock();
 #### 汇总
 
 ![image](img/Snip20160628_32.png)
-
-
