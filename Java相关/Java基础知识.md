@@ -1,3 +1,67 @@
+
+### 面向对象基本特征
+- 什么是对象？对象有划分的边界，面试官其实想问 你怎么证明你能划分出对象，以及是合理的
+- 封装
+- 继承
+- 多态
+ ![avatar](http://www.cnitblog.com/images/cnitblog_com/lily/1972/o_OOBase.gif)
+
+### final, finally, finalize 的区别
+- final关键字:http://www.importnew.com/7553.html
+- finally 用于try语句块
+- finalize()是Object类的一个方法,与GC有关
+### int 和 Integer 有什么区别
+- int是基本数据类型 初始化值0
+- Integer是int的封装类 初始化值null
+- 自动装箱 自动拆箱的细节
+### 重载和重写的区别
+- override 重写是**父子类之间**多态性的一种体现
+- overload 重载是**同一个类中**多态性的一种体现
+### 抽象类和接口有什么区别
+- 这题太难了 拒绝回答
+### 说说反射的用途及实现
+- 用途的话 最常见的加载数据库驱动
+- 最重要的用途就是开发各种框架 比如spring的IOC、AOP都有用到
+### 说说自定义注解的场景及实现
+- Annotation型定义为@interface
+- 举个例子 现在有个需求：通过aop监控接口调用的总时间(请求到来-返回响应)，
+但是只要监控部分接口，有的需要监控。这时可以自定义一个注解，在需要监控的
+接口函数上加上此注解，配合AOP即可实现。Student.getClass.getAnnotation(NeedMonitor.class)
+### HTTP 请求的 GET 与 POST 方式的区别
+- https://www.zhihu.com/question/28586791
+- https://www.oschina.net/news/77354/http-get-post-different
+- 按照上边这个博客的说法, 他们的没什么区别
+### session 与 cookie 区别
+- 参考:https://www.zhihu.com/question/19786827
+- 为什么要有session机制
+- 由于http协议是无状态的 session用来跟踪用户状态
+### session 分布式处理
+- session复制
+- session粘滞
+- session集中管理
+### equals 与 == 的区别
+- 还有公司会问？
+- 一定记得要分 基本*数据类型*和*普通对象*
+### wait和sleep的区别
+1.
+### 数组在内存中如何分配
+1. 数组也是对象 JVM和普通java对象一样处理数组
+2. 没有真正的多维数组
+### 异常分类以及处理机制
+        	throwable
+        		Error                 jvm处理
+        		Exception
+        			checked Exception 需要在方法上声明 向上抛出
+        			runtime Exception 不必需处理
+### Cloneable接口实现原理
+1. 对象要想重写Object的clone()方法，必须要实现Cloneable
+2. 设计不合理，apache common更方便
+### wait和sleep的区别
+- https://www.zhihu.com/question/23328075
+1. 首先，要记住这个差别，“sleep是Thread类的方法,wait是Object类的方法”。尽管这两个方法都会影响线程的执行行为，但是本质上是有区别的。
+2. Thread.sleep不会导致锁行为的改变，如果当前线程是拥有锁的，那么Thread.sleep不会让线程释放锁
+3. 调用wait后，需要别的线程执行notify/notifyAll才能够重新获得CPU执行时间(唤醒线程)
+
 <!-- MarkdownTOC -->
 
 - [1. 面向对象和面向过程的区别](#1-面向对象和面向过程的区别)
@@ -101,7 +165,7 @@ Java 中引入了虚拟机的概念，即在机器和编译程序之间加入了
 
 每一种平台的解释器是不同的，但是实现的虚拟机是相同的。Java 源程序经过编译器编译后变成字节码，字节码由虚拟机解释执行，虚拟机将每一条要执行的字节码送给解释器，解释器将其翻译成特定机器上的机器码，然后在特定的机器上运行。这也就是解释了 Java 的编译与解释并存的特点。
 
- Java 源代码---->编译器---->jvm 可执行的 Java 字节码(即虚拟指令)---->jvm---->jvm 中解释器----->机器可执行的二进制机器码---->程序运行。 
+ Java 源代码---->编译器---->jvm 可执行的 Java 字节码(即虚拟指令)---->jvm---->jvm 中解释器----->机器可执行的二进制机器码---->程序运行。
 
 ### 采用字节码的好处：　
 
@@ -200,7 +264,7 @@ String 中的对象是不可变的，也就可以理解为常量，线程安全�
 
 每次对 String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象。StringBuffer 每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象并改变对象引用。相同情况下使用 StirngBuilder 相比使用 StringBuffer 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的风险。
 
-**对于三者使用的总结：** 
+**对于三者使用的总结：**
 1. 操作少量的数据 = String
 2. 单线程操作字符串缓冲区下操作大量数据 = StringBuilder
 3. 多线程操作字符串缓冲区下操作大量数据 = StringBuffer
@@ -226,9 +290,9 @@ String 中的对象是不可变的，也就可以理解为常量，线程安全�
 ## 17.  接口和抽象类的区别是什么
 
 1. 接口的方法默认是 public，所有方法在接口中不能有实现(Java 8 开始接口方法可以有默认实现），抽象类可以有非抽象的方法
-2.  接口中的实例变量默认是 final 类型的，而抽象类中则不一定 
-3.  一个类可以实现多个接口，但最多只能实现一个抽象类 
-4.  一个类实现接口的话要实现接口的所有方法，而抽象类不一定 
+2.  接口中的实例变量默认是 final 类型的，而抽象类中则不一定
+3.  一个类可以实现多个接口，但最多只能实现一个抽象类
+4.  一个类实现接口的话要实现接口的所有方法，而抽象类不一定
 5.  接口不能用 new 实例化，但可以声明，但是必须引用一个实现该接口的对象 从设计层面来说，抽象是对类的抽象，是一种模板设计，接口是行为的抽象，是一种行为的规范。
 
 ## 18.  成员变量与局部变量的区别有那些
@@ -258,7 +322,7 @@ new运算符，new创建对象实例（对象实例在堆内存中），对象�
 
 ## 23. 静态方法和实例方法有何不同
 
-1. 在外部调用静态方法时，可以使用"类名.方法名"的方式，也可以使用"对象名.方法名"的方式。而实例方法只有后面这种方式。也就是说，调用静态方法可以无需创建对象。 
+1. 在外部调用静态方法时，可以使用"类名.方法名"的方式，也可以使用"对象名.方法名"的方式。而实例方法只有后面这种方式。也就是说，调用静态方法可以无需创建对象。
 
 2. 静态方法在访问本类的成员时，只允许访问静态成员（即静态成员变量和静态方法），而不允许访问实例成员变量和实例方法；实例方法则无此限制.
 
@@ -341,7 +405,7 @@ hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返
 
 ## 29. 简述线程，程序、进程的基本概念。以及他们之间关系是什么
 
-**线程**与进程相似，但线程是一个比进程更小的执行单位。一个进程在其执行的过程中可以产生多个线程。与进程不同的是同类的多个线程共享同一块内存空间和一组系统资源，所以系统在产生一个线程，或是在各个线程之间作切换工作时，负担要比进程小得多，也正因为如此，线程也被称为轻量级进程。  
+**线程**与进程相似，但线程是一个比进程更小的执行单位。一个进程在其执行的过程中可以产生多个线程。与进程不同的是同类的多个线程共享同一块内存空间和一组系统资源，所以系统在产生一个线程，或是在各个线程之间作切换工作时，负担要比进程小得多，也正因为如此，线程也被称为轻量级进程。
 
 **程序**是含有指令和数据的文件，被存储在磁盘或其他的数据存储设备中，也就是说程序是静态的代码。
 
@@ -363,17 +427,17 @@ hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返
 
 备注： 可以用早起坐地铁来比喻这个过程：
 
-还没起床：sleeping 
+还没起床：sleeping
 
-起床收拾好了，随时可以坐地铁出发：Runnable 
+起床收拾好了，随时可以坐地铁出发：Runnable
 
-等地铁来：Waiting 
+等地铁来：Waiting
 
-地铁来了，但要排队上地铁：I/O阻塞 
+地铁来了，但要排队上地铁：I/O阻塞
 
-上了地铁，发现暂时没座位：synchronized阻塞 
+上了地铁，发现暂时没座位：synchronized阻塞
 
-地铁上找到座位：Running 
+地铁上找到座位：Running
 
 到达目的地：Dead
 
@@ -391,7 +455,7 @@ final关键字主要用在三个地方：变量、方法、类。
 
 ![Java异常类层次结构图](http://images2015.cnblogs.com/blog/641003/201607/641003-20160706232044280-355354790.png)
    在 Java 中，所有的异常都有一个共同的祖先java.lang包中的 **Throwable类**。Throwable： 有两个重要的子类：**Exception（异常）** 和 **Error（错误）** ，二者都是 Java 异常处理的重要子类，各自都包含大量子类。
-   
+
 **Error（错误）:是程序无法处理的错误**，表示运行应用程序中较严重问题。大多数错误与代码编写者执行的操作无关，而表示代码运行时 JVM（Java 虚拟机）出现的问题。例如，Java虚拟机运行错误（Virtual MachineError），当 JVM 不再有继续执行操作所需的内存资源时，将出现 OutOfMemoryError。这些异常发生时，Java虚拟机（JVM）一般会选择线程终止。
 
 这些错误表示故障发生于虚拟机自身、或者发生在虚拟机试图执行应用时，如Java虚拟机运行错误（Virtual MachineError）、类定义错误（NoClassDefFoundError）等。这些错误是不可查的，因为它们在应用程序的控制和处理能力之 外，而且绝大多数是程序运行时不允许出现的状况。对于设计合理的应用程序来说，即使确实发生了错误，本质上也不应该试图去处理它所引起的异常状况。在 Java中，错误通过Error的子类描述。
@@ -436,11 +500,11 @@ String s  = input.nextLine();
 input.close();
 ```
 
-方法2：通过 BufferedReader 
+方法2：通过 BufferedReader
 
 ```java
-BufferedReader input = new BufferedReader(new InputStreamReader(System.in)); 
-String s = input.readLine(); 
+BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+String s = input.readLine();
 ```
 
 
@@ -455,4 +519,129 @@ String s = input.readLine();
 **《Java编程思想(第4版)》：**
 这本书要常读，初学者可以快速概览，中等程序员可以深入看看 Java，老鸟还可以用之回顾 Java 的体系。这本书之所以厉害，因为它在无形中整合了设计模式，这本书之所以难读，也恰恰在于他对设计模式的整合是无形的。
 
+## java相关
 
+---
+
+### 一、基础
+
+
+* 基本语法
+
+	基本数据类型；运算符；表达式；选择与循环语句；类与对象（普通类、抽象类、接口、枚举、Annotation、内部类）；继承与实现；异常；package与jar包；序列化与反序列化；正则表达式；重载与覆盖；
+* 数组
+
+	一维数组；二维数组。。。
+* 集合
+
+	Collection接口；Set相关；List相关；Map相关
+* 线程
+
+	Thread；Runnable；Callable；线程状态；优先级；
+* IO
+
+	File类；字节流（InputStream、OutputStream）；字符流（Reader、Writer）；转换流（OutputStreamWriter、InputStreamReader）；压缩流；
+
+* 网络
+
+	TCP编程；UDP编程
+* 泛型
+* 反射
+
+	提供api方法取得类的结构；调用类的方法；动态代理
+
+#####  源码分析
+
+* List
+	* [ArrayList](https://mp.weixin.qq.com/s/g1E3GQU1JJzpAxV4zwRKgg)
+	* [LinkedList](https://mp.weixin.qq.com/s/oA0D1BjzBi7z0Xuvt4O-PQ)
+	* [CopyOnWriteArrayList](https://mp.weixin.qq.com/s/riVaKy4IR2uRGZzKMLVtAQ)
+* Map
+	* [HashMap](https://mp.weixin.qq.com/s/SyKckwLfV2ypJOzTFA7R_g)
+	* [LinkedHashMap](https://mp.weixin.qq.com/s/m2XfI2A2jJqFLAI_iNZI-g)
+	* [ConcurrentHashMap(上)](https://mp.weixin.qq.com/s/1GJ4Vd2iHgyvjMFLv7sO2A)
+	* [ConcurrentHashMap(下)](https://mp.weixin.qq.com/s/rPa30_MslGTz56UTxE0WAA)
+	* ConcurrentHashMap，Java 7为实现并行访问，引入了Segment这一结构，实现了分段锁，理论上最大并发度与Segment个数相等。Java 8为进一步提高并发性，摒弃了分段锁的方案，而是直接使用一个大的数组。同时为了提高哈希碰撞下的寻址性能，Java 8在链表长度超过一定阈值（8）时将链表（寻址时间复杂度为O(N)）转换为红黑树（寻址时间复杂度为O(long(N))），[原文链接](http://www.jasongj.com/java/concurrenthashmap/)
+
+
+### 二、进阶
+
+* 	[java关键字](java修饰词.md)
+* 	[正则表达式](regex.md)
+* 	[常见锁](java-lock.md)
+* 	[常用java类库](常用java类.md)
+*	[java的System.getProperty()方法使用](http://blog.csdn.net/itomge/article/details/9098207)
+* 	[java8函数编程（lambda表达式）](java8-stream.md)
+* 	[java的线程状态](java的线程状态.md)
+* 	[ThreadLocal原理机制](ThreadLocal.md)
+* 	[HashMap的扩容机制](../basic-knowledge/HashMap的扩容机制.md)
+* 	[Exception](java-exception.md)
+* 	[各种坑](各种坑.md)
+* 	[IO类型](java-io.md)
+
+* ###### NIO
+	* 	[NIO](IO/NIO.md)
+	* 	[深度解读 Tomcat 中的 NIO 模型](https://mp.weixin.qq.com/s/Nk7gcwsgBhgMWTRkgAFpRA)
+	* [epoll 浅析以及 nio 中的 Selector](https://mp.weixin.qq.com/s/RmONdyXuJZa8WyJCu2j7WA)
+	* [Linux IO模式及 select、poll、epoll详解](https://segmentfault.com/a/1190000003063859)
+
+* ###### 多线程
+	* [Java 多线程知识汇总(1)](https://mp.weixin.qq.com/s/D3TIYMaCSGtY5Dv38vMHpA)
+	* [Java 多线程知识汇总(2)](https://mp.weixin.qq.com/s/e9avHfZtfiQ4v3fhVHIcAA)
+	* [Java 多线程知识汇总(3)](https://mp.weixin.qq.com/s/s6UvYe1CP8zigR7E6mK9Og)
+
+* ###### java并发包
+	* 	[jdk并发包里常用的类](../basic-knowledge/concurrent-class.md)
+	*	[Java 并发源码合集](https://mp.weixin.qq.com/s/K8y6wMNDLwsmU7EFRx7Dsw)
+	*	[CyclicBarrier](https://mp.weixin.qq.com/s/Y9IcHAwa4VkJN02_U1fDWg)
+	* 	[CountDownLatch](https://mp.weixin.qq.com/s/UA8hoHiJj5vzb2-c08lpDA)
+	* 	[Semaphore](https://mp.weixin.qq.com/s/i_-seey2Du-99SyLSC9OiQ)
+
+
+
+* ###### 示例
+	* [JAVA集合框架中的常用集合及其特点、适用场景、实现原理简介](https://mp.weixin.qq.com/s/FRF-c2t_Un1Krw29yuxyaw)
+
+* ###### netty
+	* [Netty 长连接服务](https://www.dozer.cc/2014/12/netty-long-connection.html)
+
+
+### 三、JVM虚拟机
+
+*  	[内存模型](jvm内存结构.md)
+* 	[类加载](类加载器.md)
+*  	[GC垃圾回收](java-gc.md)
+* 	[强引用、软引用、弱引用、幻象引用](java-class-reference.md)
+* ###### JVM 调优
+	*   [jvm参数](jvm-param.md)
+	*  	[jvm自带命令](https://mp.weixin.qq.com/s/QNr8somjodyvU9dRAQG2oA)
+	* 	[如何优化Java GC](https://mp.weixin.qq.com/s/ydkEkh_Uc1paftJLKIsm0w)
+	* 	[大型跨境电商 JVM 调优经历](https://mp.weixin.qq.com/s/bOarreWhQJmS6VTZfFcsZw)
+	*   [Jvm知识汇总](https://mp.weixin.qq.com/s/4c9K5eYMFGVV2WyKaYXVBA)
+	*   [海量连接服务端jvm参数调优杂记](https://mp.weixin.qq.com/s/jt_BCAo8krxPAhLhhLdIrg)
+* ###### JVM 调优工具
+	* 	[XXFox](http://xxfox.perfma.com/)
+
+### 四、前沿
+
+*   [Java 的版本历史与特性](https://mp.weixin.qq.com/s/wcF14v11QaS21UFczqGbVg)
+*   [JavaEE 7 正式发布](http://www.iteye.com/news/27980)
+*   [Java 8-从持久代到metaspace](https://mp.weixin.qq.com/s/w_Uqi5PBkWCqh7qHq6XaKw)
+*   [Java 8的新特性—终极版](https://mp.weixin.qq.com/s/CWNIRk9xGu2XSbrWELTKNg)
+* 	[Java 9 中的新特性](https://mp.weixin.qq.com/s/YalBtZ_dZayMec8aprk6Xw)
+* 	[Java 10正式发布，带来了这些新特性](https://mp.weixin.qq.com/s/UX_tP95fTR99B53DYgHNJQ)
+
+### 五、其它
+* 	[随机数生成 --- NativePRNGNonBlocking ](http://hongjiang.info/java8-nativeprng-blocking/)
+* 	[随机token 生成代码](java-random.md)
+* 	[HashMap扩容、散列碰撞](https://yq.aliyun.com/articles/225660?spm=5176.100238.spm-cont-list.1.LYRwKV)
+* 	[一台Java服务器跑多少个线程](https://mp.weixin.qq.com/s/lQkPltX3yS3bGb9EbxHGAg)
+* 	[【死磕Java并发】—- 深入分析CAS](https://mp.weixin.qq.com/s/--AMdl0GZQkY1MWIWQ-HHA)
+* 	[深入探索 Java 热部署](https://www.ibm.com/developerworks/cn/java/j-lo-hotdeploy/index.html)
+* 	signal 信号
+	* [jvm与系统信号(2)](http://hongjiang.info/jvm-and-signals-2/)
+	* [kill 命令详解 系统信号](https://www.cnblogs.com/MYSQLZOUQI/p/5258898.html)
+	* [Linux系统下如何优雅地关闭Java进程方法](http://www.kgc.cn/bbs/post/90262.shtml)
+	* [signal信号捕捉](https://blog.csdn.net/aa4790139/article/details/8584931)
+	* drools-demo 代码示例，java工程优雅关闭（kill pid , 默认信号 15）
+*
